@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #b89142;
+}
+
+.btn-gold {
+  @apply rounded-full bg-[#C9A84C] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition;
+}
+
+.btn-gold:hover {
+  @apply bg-black text-[#C9A84C];
+}
+
+.bg-brand-black {
+  background-color: #000000;
+}
+
+.text-brand-gold {
+  color: #C9A84C;
+}
