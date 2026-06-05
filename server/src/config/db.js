@@ -1,7 +1,11 @@
 ﻿const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const dns = require('dns');
 
 dotenv.config();
+
+// Force Google DNS to resolve MongoDB SRV records
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const connectDB = async () => {
   const uri = process.env.MONGO_URI;
@@ -13,8 +17,8 @@ const connectDB = async () => {
 
   try {
     await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
     });
 
     console.log('MongoDB connected successfully');

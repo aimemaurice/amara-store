@@ -8,6 +8,8 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Profile from '../pages/Profile';
 import OrderHistory from '../pages/OrderHistory';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
 
 function AppRoutes() {
@@ -22,6 +24,8 @@ function AppRoutes() {
       <Route path="/register" element={<Register />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/orders" element={<OrderHistory />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

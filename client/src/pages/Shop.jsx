@@ -14,6 +14,7 @@ const Shop = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
   const [loading, setLoading] = useState(true);
   const [limit] = useState(12);
   const location = useLocation();
@@ -36,10 +37,12 @@ const Shop = () => {
       const data = await productService.getAllProducts(filters);
       setProducts(data.products || []);
       setTotalPages(data.totalPages || 1);
+      setTotalItems(data.totalCount || data.totalItems || data.products?.length || 0);
     } catch (error) {
       console.error('Failed to load products:', error);
       setProducts([]);
       setTotalPages(1);
+      setTotalItems(0);
     } finally {
       setLoading(false);
     }
@@ -82,8 +85,8 @@ const Shop = () => {
           key={i}
           type="button"
           onClick={() => setPage(i)}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-            i === page ? 'bg-[#C9A84C] text-black' : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100'
+          className={`px-3 py-2 text-sm transition ${
+            i === page ? 'text-[#C9A84C] font-semibold' : 'text-slate-500 hover:text-slate-900'
           }`}
         >
           {i}
@@ -97,75 +100,92 @@ const Shop = () => {
     <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-[#C9A84C]">Shop the Collection</p>
-          <h1 className="mt-4 text-4xl font-bold sm:text-5xl">Discover your next wardrobe favorite</h1>
-        </div>
+      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <section className="bg-white pb-10 pt-4">
+          <div className="text-center">
+            <p className="text-sm uppercase tracking-[0.35em] text-[#C9A84C]">Shop</p>
+            <h1 className="mt-4 text-5xl font-semibold uppercase tracking-[0.08em] text-slate-900 sm:text-6xl">
+              The Collection
+            </h1>
+            <p className="mt-4 text-sm text-slate-500">{totalItems} pieces</p>
+          </div>
+        </section>
 
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => handleCategoryClick('')}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                !selectedCategory ? 'bg-[#C9A84C] text-black' : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              All
-            </button>
-            {categories.map((category) => (
+        <section className="sticky top-24 z-30 border-b border-slate-200 bg-white py-4 backdrop-blur-xl">
+          <div className="mx-auto flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap gap-4">
               <button
-                key={category._id || category.id}
                 type="button"
-                onClick={() => handleCategoryClick(category.slug)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  selectedCategory === category.slug
-                    ? 'bg-[#C9A84C] text-black'
-                    : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100'
+                onClick={() => handleCategoryClick('')}
+                className={`rounded-none px-3 py-2 text-sm uppercase tracking-[0.3em] transition ${
+                  !selectedCategory
+                    ? 'border-b-2 border-[#C9A84C] text-[#C9A84C]' 
+                    : 'text-slate-600 hover:text-[#C9A84C]'
                 }`}
               >
-                {category.name}
+                All
               </button>
-            ))}
-          </div>
+              {categories.map((category) => (
+                <button
+                  key={category._id || category.id}
+                  type="button"
+                  onClick={() => handleCategoryClick(category.slug)}
+                  className={`rounded-none px-3 py-2 text-sm uppercase tracking-[0.3em] transition ${
+                    selectedCategory === category.slug
+                      ? 'border-b-2 border-[#C9A84C] text-[#C9A84C]' 
+                      : 'text-slate-600 hover:text-[#C9A84C]'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
 
-          <div className="relative w-full sm:w-auto">
-            <input
-              type="search"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Search products"
-              className="w-full rounded-full border border-slate-200 bg-slate-50 px-5 py-3 text-sm text-slate-900 outline-none transition focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 sm:w-80"
-            />
+            <div className="relative w-full max-w-md sm:w-auto">
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.35-4.35" />
+                </svg>
+              </span>
+              <input
+                type="search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                placeholder="Search products"
+                className="w-full border-none border-b border-slate-200 bg-transparent py-3 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#C9A84C] focus:outline-none"
+              />
+            </div>
           </div>
-        </div>
+        </section>
 
-        {loading ? (
-          <div className="flex justify-center py-24">
-            <Spinner />
+        <section className="mt-8">
+          {loading ? (
+            <div className="flex justify-center py-24">
+              <Spinner />
+            </div>
+          ) : products.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-16 text-center">
+              <h2 className="text-2xl font-semibold">No products found</h2>
+              <p className="mt-3 text-slate-600">Try a different search or category.</p>
+            </div>
+          ) : (
+            <div className="grid gap-0 sm:grid-cols-2 xl:grid-cols-4">
+              {products.map((product) => (
+                <div key={product._id || product.id} className="border border-gray-100">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {!loading && totalPages > 1 && (
+          <div className="mt-10 flex justify-center text-sm text-slate-600">
+            <div className="inline-flex items-center gap-4">
+              {paginationButtons}
+            </div>
           </div>
-        ) : (
-          <>
-            {products.length === 0 ? (
-              <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-16 text-center">
-                <h2 className="text-2xl font-semibold">No products found</h2>
-                <p className="mt-3 text-slate-600">Try a different search or category.</p>
-              </div>
-            ) : (
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {products.map((product) => (
-                  <ProductCard key={product._id || product.id} product={product} />
-                ))}
-              </div>
-            )}
-
-            {totalPages > 1 && (
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                {paginationButtons}
-              </div>
-            )}
-          </>
         )}
       </main>
 
