@@ -42,7 +42,7 @@ const Home = () => {
           className="relative flex min-h-screen items-center justify-center bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1600&q=80')",
+              "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80')",
           }}
         >
           <div className="absolute inset-0 bg-black/40" />

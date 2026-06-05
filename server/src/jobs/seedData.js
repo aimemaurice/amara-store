@@ -8,39 +8,39 @@ dotenv.config();
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const randStock = () => Math.floor(Math.random() * 41) + 10; // 10-50
 
-// Picsum URLs provided by user (6 per category)
+// Product image URLs for each category
 const pic = {
   dresses: [
-    'https://picsum.photos/seed/dress1/800/1000',
-    'https://picsum.photos/seed/dress2/800/1000',
-    'https://picsum.photos/seed/dress3/800/1000',
-    'https://picsum.photos/seed/dress4/800/1000',
-    'https://picsum.photos/seed/dress5/800/1000',
-    'https://picsum.photos/seed/dress6/800/1000',
+    'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80',
+    'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80',
+    'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&q=80',
+    'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80',
+    'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=800&q=80',
+    'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
   ],
   tops: [
-    'https://picsum.photos/seed/top1/800/1000',
-    'https://picsum.photos/seed/top2/800/1000',
-    'https://picsum.photos/seed/top3/800/1000',
-    'https://picsum.photos/seed/top4/800/1000',
-    'https://picsum.photos/seed/top5/800/1000',
-    'https://picsum.photos/seed/top6/800/1000',
+    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80',
+    'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&q=80',
+    'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80',
+    'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80',
+    'https://images.unsplash.com/photo-1485230895905-ec40ba36b9f3?w=800&q=80',
   ],
   jackets: [
-    'https://picsum.photos/seed/jacket1/800/1000',
-    'https://picsum.photos/seed/jacket2/800/1000',
-    'https://picsum.photos/seed/jacket3/800/1000',
-    'https://picsum.photos/seed/jacket4/800/1000',
-    'https://picsum.photos/seed/jacket5/800/1000',
-    'https://picsum.photos/seed/jacket6/800/1000',
+    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
+    'https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=800&q=80',
+    'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80',
+    'https://images.unsplash.com/photo-1520975916090-8344b3a4e88b?w=800&q=80',
+    'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800&q=80',
+    'https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80',
   ],
   accessories: [
-    'https://picsum.photos/seed/accessory1/800/1000',
-    'https://picsum.photos/seed/accessory2/800/1000',
-    'https://picsum.photos/seed/accessory3/800/1000',
-    'https://picsum.photos/seed/accessory4/800/1000',
-    'https://picsum.photos/seed/accessory5/800/1000',
-    'https://picsum.photos/seed/accessory6/800/1000',
+    'https://images.unsplash.com/photo-1584917865442-5bb5b5f94943?w=800&q=80',
+    'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800&q=80',
+    'https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&q=80',
+    'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=800&q=80',
+    'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
+    'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80',
   ],
 };
 
