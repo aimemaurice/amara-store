@@ -17,6 +17,7 @@ const Navbar = () => {
   const { user } = useAuth();
   const { totalItems } = useCart();
   const navigate = useNavigate();
+  const navItems = user?.role === 'admin' ? [...navLinks, { label: 'Admin', to: '/admin' }] : navLinks;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
-          {navLinks.map((link) => (
+          {navItems.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -123,7 +124,7 @@ const Navbar = () => {
           </div>
 
           <div className="grid gap-8 text-center">
-            {navLinks.map((link) => (
+            {navItems.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
