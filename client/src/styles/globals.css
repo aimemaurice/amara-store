@@ -12,11 +12,18 @@ html {
 
 body {
   @apply bg-white text-slate-900 antialiased;
+  font-family: 'Jost', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cormorant Garamond', serif;
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 4px;
+  height: 4px;
 }
 
 *::-webkit-scrollbar-track {

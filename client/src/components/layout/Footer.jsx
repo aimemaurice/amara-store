@@ -87,22 +87,22 @@ const Footer = () => (
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#C9A84C]">Customer Care</p>
           <ul className="space-y-3 text-sm text-white/70">
             <li>
-              <Link to="/faq" className="transition hover:text-white">
+              <Link to="/contact" className="transition hover:text-white">
                 FAQ
               </Link>
             </li>
             <li>
-              <Link to="/shipping" className="transition hover:text-white">
+              <Link to="/contact" className="transition hover:text-white">
                 Shipping
               </Link>
             </li>
             <li>
-              <Link to="/returns" className="transition hover:text-white">
+              <Link to="/contact" className="transition hover:text-white">
                 Returns
               </Link>
             </li>
             <li>
-              <Link to="/help" className="transition hover:text-white">
+              <Link to="/contact" className="transition hover:text-white">
                 Help Center
               </Link>
             </li>

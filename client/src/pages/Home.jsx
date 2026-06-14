@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FiTruck, FiAward, FiRotateCcw } from 'react-icons/fi';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ProductCard from '../components/product/ProductCard';
@@ -42,16 +43,19 @@ const Home = () => {
           className="relative flex min-h-screen items-center justify-center bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80')",
+              "url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/30" />
           <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-8 px-4 text-center text-white sm:px-6 lg:px-8">
             <p className="text-sm uppercase tracking-[0.5em] text-[#C9A84C]">New Collection 2026</p>
-            <h1 className="text-[5rem] font-medium uppercase tracking-[0.8em] leading-none text-white sm:text-[6rem]">
+            <h1
+              className="text-[5rem] font-medium uppercase tracking-[0.8em] leading-none text-white sm:text-[6rem]"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
               AMARA
             </h1>
-            <p className="max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
+            <p className="max-w-3xl text-lg leading-[2.1rem] tracking-[0.01em] text-white/75 sm:text-xl">
               Contemporary luxury, crafted for the modern African wardrobe with timeless silhouettes and refined details.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row">
@@ -150,6 +154,107 @@ const Home = () => {
                   No categories available right now.
                 </div>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/* Editorial Split Section */}
+        <section className="flex min-h-[500px]">
+          <div
+            className="w-1/2 bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=800&q=80')",
+            }}
+          />
+          <div className="flex w-1/2 flex-col items-start justify-center bg-black px-8 py-12 sm:px-12">
+            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-[#C9A84C]">The Amara Edit</p>
+            <h2
+              className="mb-6 text-4xl leading-tight text-white sm:text-5xl"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Curated for the Modern African Woman
+            </h2>
+            <p className="mb-8 max-w-md text-base leading-8 text-white/70">
+              Handpicked pieces that celebrate contemporary African elegance, from bold statement dresses to refined everyday essentials.
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex rounded-full bg-[#C9A84C] px-10 py-4 text-sm font-semibold uppercase tracking-[0.25em] text-black transition hover:bg-white/90"
+            >
+              Shop the Edit
+            </Link>
+          </div>
+        </section>
+
+        {/* Brand Values Strip */}
+        <section className="border-t border-b border-[#C9A84C] bg-white py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-12 sm:grid-cols-3">
+              {/* Free Delivery */}
+              <div className="flex flex-col items-center text-center">
+                <FiTruck className="mb-4 h-12 w-12 text-[#C9A84C]" />
+                <h3 className="text-lg font-semibold uppercase tracking-[0.1em] text-slate-900">
+                  Free Delivery in Kigali
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">Orders over 50,000 RWF</p>
+              </div>
+              {/* Luxury Quality */}
+              <div className="flex flex-col items-center text-center">
+                <FiAward className="mb-4 h-12 w-12 text-[#C9A84C]" />
+                <h3 className="text-lg font-semibold uppercase tracking-[0.1em] text-slate-900">
+                  Luxury Quality Guaranteed
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">Premium fabrics & craftsmanship</p>
+              </div>
+              {/* Easy Returns */}
+              <div className="flex flex-col items-center text-center">
+                <FiRotateCcw className="mb-4 h-12 w-12 text-[#C9A84C]" />
+                <h3 className="text-lg font-semibold uppercase tracking-[0.1em] text-slate-900">
+                  Easy Returns
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">30-day hassle-free returns</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Instagram Photo Grid */}
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <p className="mb-3 text-sm uppercase tracking-[0.35em] text-[#C9A84C]">Follow Our Style</p>
+              <h2 className="text-4xl font-semibold uppercase tracking-[0.15em] text-slate-900 sm:text-5xl">
+                @__amara.en.or
+              </h2>
+            </div>
+
+            <div className="grid gap-0 grid-cols-2 sm:grid-cols-3">
+              {[
+                'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80',
+                'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80',
+                'https://images.unsplash.com/photo-1583846783214-7229a91b20ed?w=600&q=80',
+                'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80',
+                'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80',
+                'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80',
+              ].map((image, idx) => (
+                <Link
+                  key={idx}
+                  to="/shop"
+                  className="group relative aspect-square overflow-hidden"
+                >
+                  <img
+                    src={image}
+                    alt={`AMARA collection ${idx + 1}`}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#C9A84C]/0 transition duration-300 group-hover:bg-[#C9A84C]/40">
+                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white opacity-0 transition duration-300 group-hover:opacity-100">
+                      Shop Now
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
